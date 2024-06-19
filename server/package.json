@@ -1,0 +1,20 @@
+{
+  "name": "crispurl",
+  "version": "1.0.0",
+  "description": "A url shortner app where we can enter our original url and shorten them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Url",
+    "Shortner"
+  ],
+  "author": "Abhishek Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.3",
+    "nodemon": "^3.1.3"
+  }
+}
