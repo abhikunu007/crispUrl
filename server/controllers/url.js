@@ -6,15 +6,17 @@ async function handleGenerateShortUrl(req, res) {
     const body = req.body;
     if(!body.url) return res.status(400).json({error : "Url is Required"})
     const shortID = shortid();
+    const shortUrl =  `http://localhost:8000/url/${shortID}`
         
     try {
         await URL.create({
             shortId: shortID,
             redirectUrl: body.url,
+            shortUrl: shortUrl,
             visitHistory: []
         });
 
-        return res.json({ id: shortID });
+        return res.json({ id: shortID, shortUrl: shortUrl });
     } catch (error) {
         console.error('Error generating short URL:', error);
         return res.status(500).json({ error: 'Internal server error' });
@@ -54,6 +56,7 @@ async function handleGetAnalytics(req, res) {
         return res.json({
             totalClicks: result.visitHistory.length,
             analytics: result.visitHistory,
+            shortUrl: result.shortUrl
         });
     } catch (error) {
         console.error('Error fetching analytics:', error);
